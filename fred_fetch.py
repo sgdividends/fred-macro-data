@@ -30,6 +30,7 @@ SERIES = {
     "DGS2":         ("treasury_2y", "2-Year Treasury Yield"),
     "WRMFSL":       ("money_market_fund_assets", "Money Market Fund Assets"),
     "RRPONTSYD":    ("reverse_repo_volume", "Overnight Reverse Repo Volume"),
+    "WALCL":        ("fed_balance_sheet", "Fed Total Assets (Balance Sheet)"),
 }
 
 def fetch_series(series_id: str) -> pd.DataFrame:

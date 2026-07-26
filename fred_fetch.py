@@ -34,6 +34,9 @@ SERIES = {
     "M2SL": ("us_m2", "US M2 Money Stock"),
        "DFII10": ("treasury_10y_real", "10-Year TIPS Real Yield"),
        "GFDEBTN": ("us_federal_debt", "Federal Debt: Total Public Debt"),
+    "DFII30": ("treasury_30y_real", "30-Year TIPS Real Yield"),
+"DGS30":  ("treasury_30y", "30-Year Treasury Yield"),
+"DTB3":   ("tbill_3m", "3-Month T-Bill"),
 }
 
 def fetch_series(series_id: str) -> pd.DataFrame:

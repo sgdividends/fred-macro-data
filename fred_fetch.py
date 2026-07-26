@@ -31,6 +31,9 @@ SERIES = {
     "WRMFSL":       ("money_market_fund_assets", "Money Market Fund Assets"),
     "RRPONTSYD":    ("reverse_repo_volume", "Overnight Reverse Repo Volume"),
     "WALCL":        ("fed_balance_sheet", "Fed Total Assets (Balance Sheet)"),
+    "M2SL": ("us_m2", "US M2 Money Stock"),
+       "DFII10": ("treasury_10y_real", "10-Year TIPS Real Yield"),
+       "GFDEBTN": ("us_federal_debt", "Federal Debt: Total Public Debt"),
 }
 
 def fetch_series(series_id: str) -> pd.DataFrame:

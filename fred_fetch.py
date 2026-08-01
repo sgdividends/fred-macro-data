@@ -28,7 +28,7 @@ SERIES = {
     "T10Y3M":       ("curve_10y3m", "10Y-3M Treasury Spread"),
     "DGS10":        ("treasury_10y", "10-Year Treasury Yield"),
     "DGS2":         ("treasury_2y", "2-Year Treasury Yield"),
-    "WRMFSL":       ("money_market_fund_assets", "Money Market Fund Assets"),
+    "WRMFNS":       ("money_market_fund_assets", "Money Market Fund Assets"),
     "RRPONTSYD":    ("reverse_repo_volume", "Overnight Reverse Repo Volume"),
     "WALCL":        ("fed_balance_sheet", "Fed Total Assets (Balance Sheet)"),
     "M2SL": ("us_m2", "US M2 Money Stock"),

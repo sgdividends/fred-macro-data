@@ -37,6 +37,7 @@ SERIES = {
     "DFII30": ("treasury_30y_real", "30-Year TIPS Real Yield"),
 "DGS30":  ("treasury_30y", "30-Year Treasury Yield"),
 "DTB3":   ("tbill_3m", "3-Month T-Bill"),
+    "DCPN3M": ("cp_3m_nonfin", "90-Day AA Nonfinancial Commercial Paper Rate"), 
     "EXPINF10YR": ("infl_exp_10y_cleveland", "Cleveland Fed 10-Yr Expected Inflation"),  # 1982+, primary
 "MICH":       ("infl_exp_1y_michigan",   "U.Michigan 1-Yr Inflation Expectation"),   # 1978+, cross-check
 "CPIAUCSL":   ("cpi",                    "CPI All Urban Consumers"),                 # 1947+, trailing proxy

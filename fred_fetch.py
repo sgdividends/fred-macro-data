@@ -35,6 +35,8 @@ SERIES = {
        "DFII10": ("treasury_10y_real", "10-Year TIPS Real Yield"),
        "GFDEBTN": ("us_federal_debt", "Federal Debt: Total Public Debt"),
     "DFII30": ("treasury_30y_real", "30-Year TIPS Real Yield"),
+    "BOGZ1FL624123035Q": ("hedge_fund_prime_broker_margin", "Hedge Funds: Prime Brokerage Margin Borrowing (Z.1)"),
+    "BOGZ1FL663067003Q": ("broker_dealer_margin_receivables", "Broker-Dealer Margin Loan Receivables from Customers (Z.1)"),
 "DGS30":  ("treasury_30y", "30-Year Treasury Yield"),
 "DTB3":   ("tbill_3m", "3-Month T-Bill"),
     "DCPN3M": ("cp_3m_nonfin", "90-Day AA Nonfinancial Commercial Paper Rate"), 

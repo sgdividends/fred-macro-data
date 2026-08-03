@@ -1,6 +1,6 @@
 {
   "_comment": "Config for macro-regime-read SKILL.md Section 3b factor grouping. Consumed by scripts/regime_score.py. Edit weights HERE, not in SKILL.md, so there is one source of truth.",
-  "version": "1.0",
+  "version": "1.1",
   "updated": "2026-08-03",
 
   "_provenance_WARNING": [
@@ -33,9 +33,16 @@
   },
 
   "base_rates": {
-    "_comment": "SPX historical frequency of a drawdown beginning within the horizon. Correction = 10-19.9%, Crash = 20%+. Approximate; not recomputed from source. FLAGGED as the weakest empirical link in the whole framework.",
-    "correction": {"3mo": 0.10, "6mo": 0.18, "12mo": 0.30, "18mo": 0.36},
-    "crash":      {"3mo": 0.03, "6mo": 0.06, "12mo": 0.12, "18mo": 0.17}
+    "_comment": "DERIVED 2026-08-03 by scripts/spx_base_rates.py from daily ^GSPC, 24762 obs. Sample: post-1950 (n=19266 daily, 1950-01-03 to 2026-07-31). Definition: deepest close-to-close decline from date t over the forward horizon. Crash <= -20%; Correction -20% < d <= -10%. Mutually exclusive. Regenerate via the 'SPX Base Rates' GitHub Actions workflow.",
+    "_sample_choice": "post-1950 chosen over full-sample because 1929-32 reflects a materially different market structure (no circuit breakers, no modern Fed reaction function). post-1980 was computed as a robustness check and agrees closely (12mo crash 12.3% vs 12.0%; 18mo 15.8% vs 15.8%), so the sample choice is not load-bearing.",
+    "_confidence_intervals_95pct": {
+      "_method": "moving-block bootstrap, block length = horizon, 1000 reps. Wide because effective sample size is small: 18mo post-1950 has only 49 independent windows.",
+      "correction": {"3mo": [0.065, 0.111], "6mo": [0.109, 0.185], "12mo": [0.142, 0.248], "18mo": [0.153, 0.264]},
+      "crash":      {"3mo": [0.011, 0.037], "6mo": [0.031, 0.085], "12mo": [0.073, 0.184], "18mo": [0.096, 0.241]}
+    },
+    "_superseded": "Prior assumed values were correction 0.10/0.18/0.30/0.36 and crash 0.03/0.06/0.12/0.17. Crash was close (12mo exact). Correction was too high by up to 15.1pp at 18mo because it ignored bucket saturation: as the horizon lengthens, observations migrate out of correction into crash, so correction frequency plateaus rather than rising.",
+    "correction": {"3mo": 0.088, "6mo": 0.144, "12mo": 0.194, "18mo": 0.209},
+    "crash":      {"3mo": 0.023, "6mo": 0.055, "12mo": 0.120, "18mo": 0.158}
   },
 
   "factor_weights": {

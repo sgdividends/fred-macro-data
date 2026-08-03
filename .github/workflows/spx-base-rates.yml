@@ -1,0 +1,60 @@
+name: SPX Base Rates
+
+# Manual only. This is an analysis job, not a data pipeline -- it does not
+# commit anything and does not need a schedule. Run it when the base rates in
+# config/regime_factor_weights.json need rebuilding or re-checking.
+#
+# HOW TO RUN
+#   GitHub repo -> Actions tab -> "SPX Base Rates" in the left sidebar
+#   -> "Run workflow" button on the right -> "Run workflow" again to confirm.
+#   Wait ~1 min, click the run, expand "Compute base rates" to read the output.
+#
+# WHY IT EXISTS
+#   scripts/spx_base_rates.py needs daily ^GSPC data via yfinance. Yahoo is not
+#   reachable from every environment. The Actions runner has open network
+#   access, so this is the reliable place to get real daily figures rather than
+#   the smoothed monthly fallback.
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_monthly:
+        description: "Force the Shiller monthly fallback (results are a LOWER BOUND)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  base-rates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy pandas yfinance
+
+      - name: Compute base rates
+        run: |
+          if [ "${{ inputs.force_monthly }}" = "true" ]; then
+            python scripts/spx_base_rates.py --force-monthly
+          else
+            python scripts/spx_base_rates.py
+          fi
+
+      - name: Reminder
+        if: always()
+        run: |
+          echo "-------------------------------------------------------------"
+          echo "Output above is NOT auto-written to the config."
+          echo "Review the sample-period splits, pick one deliberately, then"
+          echo "update config/regime_factor_weights.json by hand and re-run"
+          echo "scripts/regime_score.py to see how far the framework moves."
+          echo "-------------------------------------------------------------"

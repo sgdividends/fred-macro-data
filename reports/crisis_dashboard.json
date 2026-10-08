@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-08 03:01 UTC",
+  "as_of": "2026-10-08 03:15 UTC",
   "state": "FRAGILE, no trigger yet (late-cycle risk, not a crisis)",
   "fragility_index": 2,
   "trigger_index": 0.16,
@@ -44,6 +44,7 @@
   },
   "indicators": [
     {
+      "short_history": true,
       "id": "hy_oas",
       "label": "HY OAS (%)",
       "block": "credit_pricing",
@@ -58,6 +59,7 @@
       "note": "Repo history only from 2023-07 (FRED ICE licence); use baa10y for long history."
     },
     {
+      "short_history": true,
       "id": "ig_oas",
       "label": "IG OAS (%)",
       "block": "credit_pricing",
@@ -72,6 +74,7 @@
       "note": ""
     },
     {
+      "short_history": true,
       "id": "ccc_oas",
       "label": "CCC OAS (%)",
       "block": "credit_pricing",
@@ -86,6 +89,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "baa10y",
       "label": "Moody's Baa minus 10y (%)",
       "block": "credit_pricing",
@@ -100,6 +104,7 @@
       "note": "History from 1986: use for 2008/2020 benchmarks."
     },
     {
+      "short_history": true,
       "id": "emhy_oas",
       "label": "EM HY corporate OAS (%)",
       "block": "valuation_vol_global",
@@ -114,6 +119,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "cc_delinq",
       "label": "Credit card delinquency rate, banks (%)",
       "block": "consumer_debt",
@@ -128,6 +134,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "loan_delinq",
       "label": "All-loan delinquency rate, banks (%)",
       "block": "consumer_debt",
@@ -142,6 +149,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "mortgage_delinq",
       "label": "Single-family mortgage delinquency, banks (%)",
       "block": "consumer_debt",
@@ -156,6 +164,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "debt_service",
       "label": "Household debt service ratio (%)",
       "block": "consumer_debt",
@@ -170,6 +179,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "sloos_ci",
       "label": "SLOOS net % tightening C&I, large/mid firms",
       "block": "consumer_debt",
@@ -184,6 +194,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "sloos_cc",
       "label": "SLOOS net % tightening, credit cards",
       "block": "consumer_debt",
@@ -198,6 +209,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "stl_fed_stress_index",
       "label": "St. Louis Fed stress index",
       "block": "funding_liquidity",
@@ -212,6 +224,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "chicago_fed_nfci",
       "label": "Chicago Fed NFCI",
       "block": "funding_liquidity",
@@ -226,6 +239,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "curve_10y3m",
       "label": "10y-3m spread (pp)",
       "block": "growth_rates",
@@ -240,6 +254,7 @@
       "note": "Inversion leads recessions by 6-18 months; it re-steepening after inversion is often when stress hits."
     },
     {
+      "short_history": false,
       "id": "sahm_realtime",
       "label": "Sahm rule indicator",
       "block": "growth_rates",
@@ -254,6 +269,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "initial_claims_4wk",
       "label": "Initial claims 4wk avg, 3m % change",
       "block": "growth_rates",
@@ -268,6 +284,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "vix",
       "label": "VIX",
       "block": "valuation_vol_global",
@@ -282,6 +299,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "usdjpy",
       "label": "USDJPY 3m % change (negative = yen carry unwind)",
       "block": "valuation_vol_global",
@@ -296,6 +314,7 @@
       "note": ""
     },
     {
+      "short_history": false,
       "id": "broad_dollar",
       "label": "Broad USD index 3m % change",
       "block": "valuation_vol_global",
@@ -310,6 +329,7 @@
       "note": ""
     },
     {
+      "short_history": true,
       "id": "subprime_auto",
       "label": "Fitch subprime auto ABS 60+ delinquency (%)",
       "block": "consumer_debt",
@@ -332,12 +352,14 @@
       "read": 37.2,
       "chg_3m_abs": null,
       "pctile_own_history": 89.2,
-      "history_start": "1997-01-01",
+      "short_history": false,
+      "history_start": "1998-01-01",
       "status": 1,
       "chg3m_trigger_hit": false,
       "note": "value = debit balances in $ trillion. 2000 and 2007 tops came at +60-80% y/y. The crash signal is hot growth followed by a 10%+ drop in 1-2 months."
     },
     {
+      "short_history": false,
       "id": "nfc_equity_to_gdp",
       "label": "Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only",
       "block": "valuation_vol_global",

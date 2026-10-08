@@ -1,4 +1,4 @@
-date,value,source
-2026-01-31,6.90,https://blog.cucollector.com/the-seasonal-loan-delinquency-reprieve-may-be-ending/
-2026-06-30,5.80,https://www.autoremarketing.com/subprime/fitch-watches-tax-refund-boost-on-securitizations-fade-during-half-of-the-year/
-2026-07-31,6.13,https://www.autoremarketing.com/subprime/fitch-watches-tax-refund-boost-on-securitizations-fade-during-half-of-the-year/
+date,value,source,vintage_note
+2026-01-31,6.90,https://www.espdata.com/subprime-auto-loan-delinquencies-2026/,UNVERIFIED on current series: reported before Fitch's July 2026 retroactive revision
+2026-06-30,5.80,https://www.autoremarketing.com/subprime/fitch-watches-tax-refund-boost-on-securitizations-fade-during-half-of-the-year/,revised series (July 2026 report)
+2026-07-31,6.13,https://www.autoremarketing.com/subprime/fitch-watches-tax-refund-boost-on-securitizations-fade-during-half-of-the-year/,revised series (July 2026 report)

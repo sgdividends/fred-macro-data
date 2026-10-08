@@ -47,7 +47,8 @@ def score(ind, series):
     if st is None and ind.get("pctile_warn") is not None:
         st = 2 if pct >= ind["pctile_crit"] else 1 if pct >= ind["pctile_warn"] else 0
     trig = bool(ind.get("chg3m_trigger") is not None and chg_abs is not None and chg_abs >= ind["chg3m_trigger"])
-    return {"id": ind["id"], "label": ind["label"], "block": ind["block"], "date": str(last["date"].date()),
+    short = (last["date"] - series["date"].iloc[0]).days < 365 * 10
+    return {"short_history": short, "id": ind["id"], "label": ind["label"], "block": ind["block"], "date": str(last["date"].date()),
             "value": round(float(last["value"]), 3), "read": None if x is None else round(float(x), 3),
             "chg_3m_abs": None if chg_abs is None else round(float(chg_abs), 3),
             "pctile_own_history": round(pct, 1), "history_start": str(series["date"].iloc[0].date()),
@@ -63,7 +64,7 @@ def finra_row():
     return {"id": "finra_margin_yoy", "label": "FINRA margin debt y/y (%)", "block": "leverage", "date": str(last["month"].date()),
             "value": round(float(last["debit_balances_musd"]) / 1e6, 3), "read": round(yoy, 1), "chg_3m_abs": None,
             "pctile_own_history": round(float((df["debit_yoy_pct"].dropna() <= yoy).mean() * 100), 1),
-            "history_start": str(df["month"].iloc[0].date()), "status": st, "chg3m_trigger_hit": False,
+            "short_history": False, "history_start": str(df["month"][df["debit_yoy_pct"].notna()].iloc[0].date()), "status": st, "chg3m_trigger_hit": False,
             "note": "value = debit balances in $ trillion. 2000 and 2007 tops came at +60-80% y/y. The crash signal is hot growth followed by a 10%+ drop in 1-2 months."}
 
 def load_finra():
@@ -144,9 +145,10 @@ def main():
     L += ["", "| Indicator | As of | Value | Read | Status | Pctile (own history) | History from |", "|---|---|---|---|---|---|---|"]
     names = {0: "ok", 1: "WARN", 2: "CRIT", None: "n/a"}
     for r in sorted(rows, key=lambda r: (r["block"], r["id"])):
-        L.append(f"| {r['label']} | {r['date']} | {r['value']} | {r['read']} | {names[r['status']]} | {r['pctile_own_history']} | {r['history_start']} |")
+        L.append(f"| {r['label']} | {r['date']} | {r['value']} | {r['read']} | {names[r['status']]} | {r['pctile_own_history']}{'*' if r.get('short_history') else ''} | {r['history_start']} |")
     if gaps:
         L += ["", "Missing data (excluded, not scored as normal): " + ", ".join(gaps)]
+    L += ["", "* percentile covers under 10 years of history (HY/IG/CCC/EM HY from 2023, subprime auto file): not a comparison with 2008 or 2020."]
     L += ["", "_" + out["disclaimer"] + "_"]
     Path("reports/crisis_dashboard.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))

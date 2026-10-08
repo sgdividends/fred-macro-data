@@ -1,15 +1,57 @@
 {
-  "as_of": "2026-10-08 03:15 UTC",
+  "as_of": "2026-10-08 03:27 UTC",
   "state": "FRAGILE, no trigger yet (late-cycle risk, not a crisis)",
   "fragility_index": 2,
-  "trigger_index": 0.16,
+  "trigger_index": 0.11,
   "trigger_change_hits": [],
+  "fast_trigger_lines": [
+    {
+      "label": "St. Louis Fed stress index",
+      "read": -0.468,
+      "status": 0
+    },
+    {
+      "label": "Chicago Fed NFCI",
+      "read": -0.494,
+      "status": 0
+    },
+    {
+      "label": "VIX",
+      "read": 15.01,
+      "status": 0
+    },
+    {
+      "label": "HY OAS 3m change (pp)",
+      "read": 0.31,
+      "status": 0
+    },
+    {
+      "label": "SLOOS C&I net tightening, change vs prior quarter (pp)",
+      "read": -8.1,
+      "status": 0
+    },
+    {
+      "label": "SLOOS credit card net tightening, change vs prior quarter (pp)",
+      "read": 4.7,
+      "status": 0
+    },
+    {
+      "label": "VIX / VIX3M (>1.0 = inverted, acute stress)",
+      "read": 0.851,
+      "status": 0
+    },
+    {
+      "label": "MOVE index (rates vol)",
+      "read": 102.56,
+      "status": 0
+    }
+  ],
   "blocks": {
     "credit_pricing": {
       "label": "Credit pricing",
       "role": "trigger",
-      "n": 4,
-      "score": 0.25
+      "n": 7,
+      "score": 0.14
     },
     "consumer_debt": {
       "label": "Household / consumer debt",
@@ -40,10 +82,17 @@
       "role": "mixed",
       "n": 5,
       "score": 0.4
+    },
+    "vol_regime": {
+      "label": "Volatility regime",
+      "role": "trigger",
+      "n": 2,
+      "score": 0.0
     }
   },
   "indicators": [
     {
+      "fast": false,
       "short_history": true,
       "id": "hy_oas",
       "label": "HY OAS (%)",
@@ -59,6 +108,7 @@
       "note": "Repo history only from 2023-07 (FRED ICE licence); use baa10y for long history."
     },
     {
+      "fast": false,
       "short_history": true,
       "id": "ig_oas",
       "label": "IG OAS (%)",
@@ -74,6 +124,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": true,
       "id": "ccc_oas",
       "label": "CCC OAS (%)",
@@ -89,6 +140,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "baa10y",
       "label": "Moody's Baa minus 10y (%)",
@@ -104,6 +156,7 @@
       "note": "History from 1986: use for 2008/2020 benchmarks."
     },
     {
+      "fast": false,
       "short_history": true,
       "id": "emhy_oas",
       "label": "EM HY corporate OAS (%)",
@@ -119,6 +172,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "cc_delinq",
       "label": "Credit card delinquency rate, banks (%)",
@@ -134,6 +188,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "loan_delinq",
       "label": "All-loan delinquency rate, banks (%)",
@@ -149,6 +204,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "mortgage_delinq",
       "label": "Single-family mortgage delinquency, banks (%)",
@@ -164,6 +220,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "debt_service",
       "label": "Household debt service ratio (%)",
@@ -179,6 +236,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "sloos_ci",
       "label": "SLOOS net % tightening C&I, large/mid firms",
@@ -194,6 +252,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "sloos_cc",
       "label": "SLOOS net % tightening, credit cards",
@@ -209,6 +268,7 @@
       "note": ""
     },
     {
+      "fast": true,
       "short_history": false,
       "id": "stl_fed_stress_index",
       "label": "St. Louis Fed stress index",
@@ -224,6 +284,7 @@
       "note": ""
     },
     {
+      "fast": true,
       "short_history": false,
       "id": "chicago_fed_nfci",
       "label": "Chicago Fed NFCI",
@@ -239,6 +300,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "curve_10y3m",
       "label": "10y-3m spread (pp)",
@@ -254,6 +316,7 @@
       "note": "Inversion leads recessions by 6-18 months; it re-steepening after inversion is often when stress hits."
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "sahm_realtime",
       "label": "Sahm rule indicator",
@@ -269,6 +332,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "initial_claims_4wk",
       "label": "Initial claims 4wk avg, 3m % change",
@@ -284,6 +348,7 @@
       "note": ""
     },
     {
+      "fast": true,
       "short_history": false,
       "id": "vix",
       "label": "VIX",
@@ -299,6 +364,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "usdjpy",
       "label": "USDJPY 3m % change (negative = yen carry unwind)",
@@ -314,6 +380,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "broad_dollar",
       "label": "Broad USD index 3m % change",
@@ -329,6 +396,7 @@
       "note": ""
     },
     {
+      "fast": false,
       "short_history": true,
       "id": "subprime_auto",
       "label": "Fitch subprime auto ABS 60+ delinquency (%)",
@@ -342,6 +410,102 @@
       "status": 1,
       "chg3m_trigger_hit": false,
       "note": "MANUAL file. Seasonal (Jan high, mid-year low) and Fitch revised the whole series in July 2026: compare same month only on one vintage."
+    },
+    {
+      "fast": true,
+      "short_history": true,
+      "id": "hy_oas_3m",
+      "label": "HY OAS 3m change (pp)",
+      "block": "credit_pricing",
+      "date": "2026-10-06",
+      "value": 3.03,
+      "read": 0.31,
+      "chg_3m_abs": 0.31,
+      "pctile_own_history": 47.3,
+      "history_start": "2023-07-24",
+      "status": 0,
+      "chg3m_trigger_hit": false,
+      "note": "+150bp in 3m flagged stress in 2007, 2018 and 2020 per common market lore: UNVERIFIED here (repo HY history starts 2023-07)."
+    },
+    {
+      "fast": true,
+      "short_history": false,
+      "id": "sloos_ci_chg",
+      "label": "SLOOS C&I net tightening, change vs prior quarter (pp)",
+      "block": "credit_pricing",
+      "date": "2026-07-01",
+      "value": 0.0,
+      "read": -8.1,
+      "chg_3m_abs": -8.1,
+      "pctile_own_history": 51.4,
+      "history_start": "1990-04-01",
+      "status": 0,
+      "chg3m_trigger_hit": false,
+      "note": "Confirming signal, not leading; false positive in 2022-23."
+    },
+    {
+      "fast": true,
+      "short_history": false,
+      "id": "sloos_cc_chg",
+      "label": "SLOOS credit card net tightening, change vs prior quarter (pp)",
+      "block": "credit_pricing",
+      "date": "2026-07-01",
+      "value": 6.7,
+      "read": 4.7,
+      "chg_3m_abs": 4.7,
+      "pctile_own_history": 54.5,
+      "history_start": "1996-01-01",
+      "status": 0,
+      "chg3m_trigger_hit": false,
+      "note": ""
+    },
+    {
+      "fast": true,
+      "short_history": false,
+      "id": "vix_term",
+      "label": "VIX / VIX3M (>1.0 = inverted, acute stress)",
+      "block": "vol_regime",
+      "date": "2026-10-06",
+      "value": 0.851,
+      "read": 0.851,
+      "chg_3m_abs": 0.022,
+      "pctile_own_history": 26.8,
+      "history_start": "2007-12-04",
+      "status": 0,
+      "chg3m_trigger_hit": false,
+      "note": "VIX3M (FRED VXVCLS) can lag VIX by a day; the ratio uses the latest common date."
+    },
+    {
+      "fast": false,
+      "short_history": false,
+      "id": "vix3m",
+      "label": "VIX3M (info, not scored)",
+      "block": "vol_regime",
+      "date": "2026-10-06",
+      "value": 17.64,
+      "read": 17.64,
+      "chg_3m_abs": -1.14,
+      "pctile_own_history": 34.4,
+      "history_start": "2007-12-04",
+      "status": null,
+      "chg3m_trigger_hit": false,
+      "note": ""
+    },
+    {
+      "fast": true,
+      "short_history": true,
+      "id": "move",
+      "label": "MOVE index (rates vol)",
+      "block": "vol_regime",
+      "date": "2026-10-07",
+      "value": 102.56,
+      "read": 102.56,
+      "chg_3m_abs": 32.31,
+      "pctile_own_history": 74.9,
+      "history_start": "2016-10-12",
+      "status": 0,
+      "chg3m_trigger_hit": false,
+      "note": "Not on FRED. Auto-fetched from Yahoo chart API (unofficial, may fail) with data/manual/move_index.csv as fallback. Thresholds are judgment (March 2023 peak was ~198)."
     },
     {
       "id": "finra_margin_yoy",
@@ -359,6 +523,7 @@
       "note": "value = debit balances in $ trillion. 2000 and 2007 tops came at +60-80% y/y. The crash signal is hot growth followed by a 10%+ drop in 1-2 months."
     },
     {
+      "fast": false,
       "short_history": false,
       "id": "nfc_equity_to_gdp",
       "label": "Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only",

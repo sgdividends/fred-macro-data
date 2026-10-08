@@ -14,8 +14,11 @@ Fragility (slow build: debt, leverage, valuation) versus Trigger (fast: spreads,
 | Growth/rates | trigger | 10y-3m, Sahm, claims | Sahm >= 0.5 = recession signal |
 | Valuation/vol/global | mixed | VIX, USDJPY, broad USD, EM spreads, Buffett-style ratio | VIX >35 crisis; yen strength + dollar jumps mark carry unwinds |
 
+## Fast trigger lines
+Any of these at WARN or worse flags "a trigger is turning", even if the block average is calm: HY OAS 3-month change (warn +1.0pp, crit +1.5pp), SLOOS change vs prior quarter (warn +15, crit +30 net pp), VIX/VIX3M ratio (warn >1.0 inverted, crit >1.1), MOVE (warn 110, crit 140), VIX, NFCI, STLFSI. Thresholds are judgment anchors. The +150bp HY claim is unverified here. VIX3M is FRED VXVCLS. MOVE is not on FRED: it is fetched from Yahoo's unofficial chart API (values matched Investing.com for 28 Sep - 6 Oct 2026) with data/manual/move_index.csv as fallback.
+
 ## Known gaps (not yet automated)
-CAPE and equity risk premium (needs a data source), VVIX/SKEW/MOVE (not on FRED), breadth (compute from stock-research-data), cross-currency basis, SRF usage, Treasury auction tails, China credit, a rebuilt SEC refi wall.
+CAPE and equity risk premium (needs a data source), VVIX/SKEW, breadth (compute from stock-research-data), cross-currency basis, SRF usage, Treasury auction tails, China credit, a rebuilt SEC refi wall.
 
 ## Honest limits
 - Thresholds are judgment anchors from historical ranges. They are not fitted or backtested.

@@ -36,7 +36,14 @@ def score(ind, series):
     prior = value_at_or_before(series, last["date"] - pd.DateOffset(months=3))
     chg_abs = None if prior is None else last["value"] - prior["value"]
     chg_pct = None if prior is None or prior["value"] == 0 else (last["value"] / prior["value"] - 1) * 100
-    x = last["value"] if mode == "level" else chg_pct
+    if mode == "level":
+        x = last["value"]
+    elif mode == "abs3m":
+        x = chg_abs
+    elif mode == "abs_prev":  # change vs previous observation (quarterly series such as SLOOS)
+        x = float(last["value"] - series.iloc[-2]["value"]) if len(series) > 1 else None
+    else:
+        x = chg_pct
     st = None
     if x is not None and ind.get("warn") is not None:
         d = ind.get("dir", 1)
@@ -48,7 +55,7 @@ def score(ind, series):
         st = 2 if pct >= ind["pctile_crit"] else 1 if pct >= ind["pctile_warn"] else 0
     trig = bool(ind.get("chg3m_trigger") is not None and chg_abs is not None and chg_abs >= ind["chg3m_trigger"])
     short = (last["date"] - series["date"].iloc[0]).days < 365 * 10
-    return {"short_history": short, "id": ind["id"], "label": ind["label"], "block": ind["block"], "date": str(last["date"].date()),
+    return {"fast": bool(ind.get("fast")), "short_history": short, "id": ind["id"], "label": ind["label"], "block": ind["block"], "date": str(last["date"].date()),
             "value": round(float(last["value"]), 3), "read": None if x is None else round(float(x), 3),
             "chg_3m_abs": None if chg_abs is None else round(float(chg_abs), 3),
             "pctile_own_history": round(pct, 1), "history_start": str(series["date"].iloc[0].date()),
@@ -92,7 +99,19 @@ FRAGILITY_INPUTS = {"nfc_equity_to_gdp"}
 def main():
     rows, gaps = [], []
     for ind in CFG["indicators"]:
-        s = load(ind["file"])
+        if ind.get("ratio"):  # e.g. VIX / VIX3M term structure, aligned on common dates
+            a, b = load(ind["ratio"][0]), load(ind["ratio"][1])
+            s = None
+            if a is not None and b is not None:
+                m = pd.merge(a, b, on="date", suffixes=("_a", "_b"))
+                m["value"] = m["value_a"] / m["value_b"]
+                s = m[["date", "value"]] if len(m) else None
+        else:
+            s = None
+            for path in ind.get("files", [ind.get("file")]):  # first existing file wins (fallbacks)
+                s = load(path)
+                if s is not None:
+                    break
         if s is None:
             gaps.append(ind["id"]); continue
         rows.append(score(ind, s))
@@ -116,6 +135,10 @@ def main():
         return None if not v else round(sum(v) / len(v), 2)
     frag, trig = worst({"fragility"}), avg({"trigger", "mixed"})
     hits = [r["label"] for r in rows if r["chg3m_trigger_hit"]]
+    # Fast trigger lines: one of these at WARN or worse means a trigger is turning, even if the block average is calm.
+    fast = [r for r in rows if r.get("fast") and r["status"] is not None]
+    fast_hits = [f"{r['label']} ({'CRIT' if r['status'] == 2 else 'WARN'})" for r in fast if r["status"] >= 1]
+    hits = hits + fast_hits
     rule = CFG["alert_rule"]
     empty = [k for k, b in blocks.items() if b["n"] == 0]
     if frag is None or trig is None:
@@ -131,15 +154,20 @@ def main():
     else:
         state = "CALM"
     out = {"as_of": pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC"), "state": state,
-           "fragility_index": frag, "trigger_index": trig, "trigger_change_hits": hits,
+           "fragility_index": frag, "trigger_index": trig, "trigger_change_hits": hits, "fast_trigger_lines": [{"label": r["label"], "read": r["read"], "status": r["status"]} for r in fast],
            "blocks": blocks, "indicators": rows, "data_gaps": gaps, "empty_blocks": empty,
            "disclaimer": "Thresholds are judgment anchors, not backtested. This is a condition read, not a forecast or a timing signal."}
     Path("reports").mkdir(exist_ok=True)
     Path("reports/crisis_dashboard.json").write_text(json.dumps(out, indent=2))
     L = [f"# Crisis dashboard - {out['as_of']}", "", f"**State: {state}**", "",
          f"Fragility (worst fragility block or valuation input) {frag} | Trigger index (average) {trig} (0 normal, 1 warn, 2 critical)", ""]
+    if fast:
+        names0 = {0: "ok", 1: "WARN", 2: "CRIT"}
+        L += ["Fast trigger lines (any WARN or worse flags a trigger):", ""]
+        L += [f"- {r['label']}: {r['read']} - {names0[r['status']]}" for r in fast]
+        L += [""]
     if hits:
-        L += ["3-month jump triggers hit: " + "; ".join(hits), ""]
+        L += ["Triggers hit: " + "; ".join(hits), ""]
     L += ["| Block | Role | Score | n |", "|---|---|---|---|"]
     L += [f"| {b['label']} | {b['role']} | {b['score']} | {b['n']} |" for b in blocks.values()]
     L += ["", "| Indicator | As of | Value | Read | Status | Pctile (own history) | History from |", "|---|---|---|---|---|---|---|"]

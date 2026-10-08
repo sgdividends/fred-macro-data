@@ -22,6 +22,17 @@ def fetch(sid):
     r.raise_for_status()
     return [(o["date"], o["value"]) for o in r.json()["observations"] if o["value"] != "."]
 
+FINRA_URL = "https://raw.githubusercontent.com/sgdividends/finra-margin-tracker/main/data/finra_margin/margin_debt_history.csv"
+
+def fetch_finra():
+    """Copy FINRA margin debt history (lives in the finra-margin-tracker repo) so the dashboard can read it."""
+    r = requests.get(FINRA_URL, timeout=60)
+    r.raise_for_status()
+    dest = Path("data/finra_margin")
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "margin_debt_history.csv").write_text(r.text)
+    print(f"finra margin_debt_history.csv ({len(r.text.splitlines())} lines)")
+
 def main():
     if not API_KEY:
         sys.exit("FRED_API_KEY not set")
@@ -34,6 +45,10 @@ def main():
             print(f"{sid:20s} -> {name}.csv ({len(rows)} rows)")
         except Exception as e:
             failed.append(sid); print(f"{sid:20s} FAILED: {e}", file=sys.stderr)
+    try:
+        fetch_finra()
+    except Exception as e:
+        failed.append("finra"); print(f"finra FAILED: {e}", file=sys.stderr)
     if failed:
         print(f"{len(failed)} series failed: {failed}", file=sys.stderr)
 

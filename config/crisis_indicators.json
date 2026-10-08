@@ -1,0 +1,34 @@
+{
+  "_comment": "Indicator definitions for scripts/crisis_dashboard.py. Thresholds are APPROXIMATE judgment anchors from historical ranges (2008, 2020, 2001-02 etc.), NOT fitted or backtested. Recompute against data before trusting them. mode: level (compare latest value), pct3m (3-month percent change), pp3m is absolute change. dir: 1 = higher is worse, -1 = lower is worse. A blank warn/crit means percentile-only (shown, not scored).",
+  "blocks": {
+    "credit_pricing":   {"role": "trigger",   "label": "Credit pricing"},
+    "consumer_debt":    {"role": "fragility", "label": "Household / consumer debt"},
+    "leverage":         {"role": "fragility", "label": "Market leverage"},
+    "funding_liquidity":{"role": "trigger",   "label": "Funding and liquidity"},
+    "growth_rates":     {"role": "trigger",   "label": "Growth and rates"},
+    "valuation_vol_global": {"role": "mixed", "label": "Valuation, vol, global"}
+  },
+  "indicators": [
+    {"id": "hy_oas",   "file": "data/fred/hy_oas.csv",   "block": "credit_pricing", "label": "HY OAS (%)", "mode": "level", "dir": 1, "warn": 5.0, "crit": 8.0, "chg3m_trigger": 1.5, "note": "Repo history only from 2023-07 (FRED ICE licence); use baa10y for long history."},
+    {"id": "ig_oas",   "file": "data/fred/ig_oas.csv",   "block": "credit_pricing", "label": "IG OAS (%)", "mode": "level", "dir": 1, "warn": 1.8, "crit": 3.0},
+    {"id": "ccc_oas",  "file": "data/fred/ccc_oas.csv",  "block": "credit_pricing", "label": "CCC OAS (%)", "mode": "level", "dir": 1, "warn": 10.0, "crit": 15.0},
+    {"id": "baa10y",   "file": "data/fred/baa10y.csv",   "block": "credit_pricing", "label": "Moody's Baa minus 10y (%)", "mode": "level", "dir": 1, "warn": 2.5, "crit": 4.0, "chg3m_trigger": 0.8, "note": "History from 1986: use for 2008/2020 benchmarks."},
+    {"id": "emhy_oas", "file": "data/fred/emhy_oas.csv", "block": "valuation_vol_global", "label": "EM HY corporate OAS (%)", "mode": "level", "dir": 1, "warn": 6.5, "crit": 9.0},
+    {"id": "cc_delinq","file": "data/fred/cc_delinq.csv","block": "consumer_debt", "label": "Credit card delinquency rate, banks (%)", "mode": "level", "dir": 1, "warn": 3.5, "crit": 5.0},
+    {"id": "loan_delinq","file": "data/fred/loan_delinq.csv","block": "consumer_debt", "label": "All-loan delinquency rate, banks (%)", "mode": "level", "dir": 1, "warn": 2.5, "crit": 4.0},
+    {"id": "mortgage_delinq","file": "data/fred/mortgage_delinq.csv","block": "consumer_debt", "label": "Single-family mortgage delinquency, banks (%)", "mode": "level", "dir": 1, "warn": 3.0, "crit": 5.0},
+    {"id": "debt_service","file": "data/fred/debt_service.csv","block": "consumer_debt", "label": "Household debt service ratio (%)", "mode": "level", "dir": 1, "warn": 12.0, "crit": 13.0},
+    {"id": "sloos_ci", "file": "data/fred/sloos_ci.csv", "block": "consumer_debt", "label": "SLOOS net % tightening C&I, large/mid firms", "mode": "level", "dir": 1, "warn": 10.0, "crit": 30.0},
+    {"id": "sloos_cc", "file": "data/fred/sloos_cc.csv", "block": "consumer_debt", "label": "SLOOS net % tightening, credit cards", "mode": "level", "dir": 1, "warn": 10.0, "crit": 30.0},
+    {"id": "stl_fed_stress_index","file": "data/fred/stl_fed_stress_index.csv","block": "funding_liquidity", "label": "St. Louis Fed stress index", "mode": "level", "dir": 1, "warn": 0.0, "crit": 2.0},
+    {"id": "chicago_fed_nfci","file": "data/fred/chicago_fed_nfci.csv","block": "funding_liquidity", "label": "Chicago Fed NFCI", "mode": "level", "dir": 1, "warn": 0.0, "crit": 1.0},
+    {"id": "curve_10y3m","file": "data/fred/curve_10y3m.csv","block": "growth_rates", "label": "10y-3m spread (pp)", "mode": "level", "dir": -1, "warn": 0.5, "crit": 0.0, "note": "Inversion leads recessions by 6-18 months; it re-steepening after inversion is often when stress hits."},
+    {"id": "sahm_realtime","file": "data/fred/sahm_realtime.csv","block": "growth_rates", "label": "Sahm rule indicator", "mode": "level", "dir": 1, "warn": 0.3, "crit": 0.5},
+    {"id": "initial_claims_4wk","file": "data/fred/initial_claims_4wk.csv","block": "growth_rates", "label": "Initial claims 4wk avg, 3m % change", "mode": "pct3m", "dir": 1, "warn": 15.0, "crit": 30.0},
+    {"id": "vix",      "file": "data/fred/vix.csv",      "block": "valuation_vol_global", "label": "VIX", "mode": "level", "dir": 1, "warn": 25.0, "crit": 35.0},
+    {"id": "usdjpy",   "file": "data/fred/usdjpy.csv",   "block": "valuation_vol_global", "label": "USDJPY 3m % change (negative = yen carry unwind)", "mode": "pct3m", "dir": -1, "warn": -6.0, "crit": -10.0},
+    {"id": "broad_dollar","file": "data/fred/broad_dollar.csv","block": "valuation_vol_global", "label": "Broad USD index 3m % change", "mode": "pct3m", "dir": 1, "warn": 4.0, "crit": 8.0},
+    {"id": "subprime_auto","file": "data/manual/subprime_auto_delinquency.csv","block": "consumer_debt", "label": "Fitch subprime auto ABS 60+ delinquency (%)", "mode": "level", "dir": 1, "warn": 6.0, "crit": 7.0, "note": "MANUAL file. Seasonal (Jan high, mid-year low) and Fitch revised the whole series in July 2026: compare same month only on one vintage."}
+  ],
+  "alert_rule": {"fragility_high": 1.0, "trigger_on": 0.5}
+}

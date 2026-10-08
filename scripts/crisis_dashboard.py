@@ -44,6 +44,8 @@ def score(ind, series):
         st = 2 if x * d >= c * d else 1 if x * d >= w * d else 0
     # percentile of the latest level vs the indicator's own history
     pct = float((series["value"] <= last["value"]).mean() * 100)
+    if st is None and ind.get("pctile_warn") is not None:
+        st = 2 if pct >= ind["pctile_crit"] else 1 if pct >= ind["pctile_warn"] else 0
     trig = bool(ind.get("chg3m_trigger") is not None and chg_abs is not None and chg_abs >= ind["chg3m_trigger"])
     return {"id": ind["id"], "label": ind["label"], "block": ind["block"], "date": str(last["date"].date()),
             "value": round(float(last["value"]), 3), "read": None if x is None else round(float(x), 3),
@@ -80,7 +82,7 @@ def buffett_row():
     m["value"] = m["eq"] / (m["gdp"] * 1000) * 100  # eq in $M, GDP in $B
     s = m[["date", "value"]]
     row = score({"id": "nfc_equity_to_gdp", "label": "Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only",
-                 "block": "valuation_vol_global", "mode": "level", "note": "Not the Wilshire-5000 Buffett ratio (covers nonfinancial corporate equities only). Read the percentile, not the level."}, s)
+                 "block": "valuation_vol_global", "mode": "level", "pctile_warn": 90, "pctile_crit": 98, "note": "Not the Wilshire-5000 Buffett ratio (nonfinancial corporate equities only). Scored on percentile of its own history; a long-run upward drift biases the percentile high, so treat as a valuation-stretch flag, not a precise level."}, s)
     return row
 
 def main():
@@ -104,8 +106,11 @@ def main():
     frag, trig = avg({"fragility", "mixed"}), avg({"trigger", "mixed"})
     hits = [r["label"] for r in rows if r["chg3m_trigger_hit"]]
     rule = CFG["alert_rule"]
+    empty = [k for k, b in blocks.items() if b["n"] == 0]
     if frag is None or trig is None:
         state = "INSUFFICIENT DATA"
+    elif empty:
+        state = "PARTIAL DATA (no scored indicators in: " + ", ".join(empty) + ") - do not read as calm"
     elif frag >= rule["fragility_high"] and (trig >= rule["trigger_on"] or hits):
         state = "ALERT: fragile and a trigger is turning"
     elif frag >= rule["fragility_high"]:
@@ -116,7 +121,7 @@ def main():
         state = "CALM"
     out = {"as_of": pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC"), "state": state,
            "fragility_index": frag, "trigger_index": trig, "trigger_change_hits": hits,
-           "blocks": blocks, "indicators": rows, "data_gaps": gaps,
+           "blocks": blocks, "indicators": rows, "data_gaps": gaps, "empty_blocks": empty,
            "disclaimer": "Thresholds are judgment anchors, not backtested. This is a condition read, not a forecast or a timing signal."}
     Path("reports").mkdir(exist_ok=True)
     Path("reports/crisis_dashboard.json").write_text(json.dumps(out, indent=2))

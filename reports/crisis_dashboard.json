@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-10-08 01:04 UTC",
+  "as_of": "2026-10-08 02:57 UTC",
   "state": "CALM",
-  "fragility_index": 0.07,
-  "trigger_index": 0.06,
+  "fragility_index": 0.51,
+  "trigger_index": 0.16,
   "trigger_change_hits": [],
   "blocks": {
     "credit_pricing": {
@@ -20,8 +20,8 @@
     "leverage": {
       "label": "Market leverage",
       "role": "fragility",
-      "n": 0,
-      "score": null
+      "n": 1,
+      "score": 1.0
     },
     "funding_liquidity": {
       "label": "Funding and liquidity",
@@ -38,8 +38,8 @@
     "valuation_vol_global": {
       "label": "Valuation, vol, global",
       "role": "mixed",
-      "n": 4,
-      "score": 0.0
+      "n": 5,
+      "score": 0.4
     }
   },
   "indicators": [
@@ -324,6 +324,20 @@
       "note": "MANUAL file. Seasonal (Jan high, mid-year low) and Fitch revised the whole series in July 2026: compare same month only on one vintage."
     },
     {
+      "id": "finra_margin_yoy",
+      "label": "FINRA margin debt y/y (%)",
+      "block": "leverage",
+      "date": "2026-08-01",
+      "value": 1.454,
+      "read": 37.2,
+      "chg_3m_abs": null,
+      "pctile_own_history": 89.2,
+      "history_start": "1997-01-01",
+      "status": 1,
+      "chg3m_trigger_hit": false,
+      "note": "value = debit balances in $ trillion. 2000 and 2007 tops came at +60-80% y/y. The crash signal is hot growth followed by a 10%+ drop in 1-2 months."
+    },
+    {
       "id": "nfc_equity_to_gdp",
       "label": "Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only",
       "block": "valuation_vol_global",
@@ -333,11 +347,12 @@
       "chg_3m_abs": 35.596,
       "pctile_own_history": 100.0,
       "history_start": "1947-10-01",
-      "status": null,
+      "status": 2,
       "chg3m_trigger_hit": false,
-      "note": "Not the Wilshire-5000 Buffett ratio (covers nonfinancial corporate equities only). Read the percentile, not the level."
+      "note": "Not the Wilshire-5000 Buffett ratio (nonfinancial corporate equities only). Scored on percentile of its own history; a long-run upward drift biases the percentile high, so treat as a valuation-stretch flag, not a precise level."
     }
   ],
   "data_gaps": [],
+  "empty_blocks": [],
   "disclaimer": "Thresholds are judgment anchors, not backtested. This is a condition read, not a forecast or a timing signal."
 }

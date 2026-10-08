@@ -1,17 +1,17 @@
-# Crisis dashboard - 2026-10-08 01:04 UTC
+# Crisis dashboard - 2026-10-08 02:57 UTC
 
 **State: CALM**
 
-Fragility index 0.07 | Trigger index 0.06 (0 normal, 1 warn, 2 critical)
+Fragility index 0.51 | Trigger index 0.16 (0 normal, 1 warn, 2 critical)
 
 | Block | Role | Score | n |
 |---|---|---|---|
 | Credit pricing | trigger | 0.25 | 4 |
 | Household / consumer debt | fragility | 0.14 | 7 |
-| Market leverage | fragility | None | 0 |
+| Market leverage | fragility | 1.0 | 1 |
 | Funding and liquidity | trigger | 0.0 | 2 |
 | Growth and rates | trigger | 0.0 | 3 |
-| Valuation, vol, global | mixed | 0.0 | 4 |
+| Valuation, vol, global | mixed | 0.4 | 5 |
 
 | Indicator | As of | Value | Read | Status | Pctile (own history) | History from |
 |---|---|---|---|---|---|---|
@@ -31,9 +31,10 @@ Fragility index 0.07 | Trigger index 0.06 (0 normal, 1 warn, 2 critical)
 | 10y-3m spread (pp) | 2026-10-06 | 1.06 | 1.06 | ok | 36.1 | 1982-01-04 |
 | Initial claims 4wk avg, 3m % change | 2026-09-26 | 200000.0 | -10.913 | ok | 2.7 | 1967-01-28 |
 | Sahm rule indicator | 2026-09-01 | 0.0 | 0.0 | ok | 43.7 | 1959-12-01 |
+| FINRA margin debt y/y (%) | 2026-08-01 | 1.454 | 37.2 | WARN | 89.2 | 1997-01-01 |
 | Broad USD index 3m % change | 2026-10-02 | 121.385 | 0.576 | ok | 90.0 | 2006-01-02 |
 | EM HY corporate OAS (%) | 2026-10-06 | 3.28 | 3.28 | ok | 22.2 | 2023-10-09 |
-| Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | n/a | 100.0 | 1947-10-01 |
+| Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | CRIT | 100.0 | 1947-10-01 |
 | USDJPY 3m % change (negative = yen carry unwind) | 2026-10-02 | 157.81 | -1.92 | ok | 70.6 | 1971-01-04 |
 | VIX | 2026-10-06 | 15.01 | 15.01 | ok | 32.1 | 1990-01-02 |
 

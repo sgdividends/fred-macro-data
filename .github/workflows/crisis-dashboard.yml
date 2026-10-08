@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "fred-data-bot"
           git config user.email "actions@github.com"
-          git add data/fred/ reports/
+          git add data/fred/ data/finra_margin/ reports/
           git diff --staged --quiet || git commit -m "Crisis dashboard update"
           git pull --rebase
           git push

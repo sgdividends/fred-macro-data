@@ -1,8 +1,8 @@
-# Crisis dashboard - 2026-10-08 02:57 UTC
+# Crisis dashboard - 2026-10-08 03:01 UTC
 
-**State: CALM**
+**State: FRAGILE, no trigger yet (late-cycle risk, not a crisis)**
 
-Fragility index 0.51 | Trigger index 0.16 (0 normal, 1 warn, 2 critical)
+Fragility (worst fragility block or valuation input) 2 | Trigger index (average) 0.16 (0 normal, 1 warn, 2 critical)
 
 | Block | Role | Score | n |
 |---|---|---|---|

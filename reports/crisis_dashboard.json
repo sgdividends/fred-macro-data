@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-08 02:57 UTC",
-  "state": "CALM",
-  "fragility_index": 0.51,
+  "as_of": "2026-10-08 03:01 UTC",
+  "state": "FRAGILE, no trigger yet (late-cycle risk, not a crisis)",
+  "fragility_index": 2,
   "trigger_index": 0.16,
   "trigger_change_hits": [],
   "blocks": {

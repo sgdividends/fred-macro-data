@@ -85,6 +85,9 @@ def buffett_row():
                  "block": "valuation_vol_global", "mode": "level", "pctile_warn": 90, "pctile_crit": 98, "note": "Not the Wilshire-5000 Buffett ratio (nonfinancial corporate equities only). Scored on percentile of its own history; a long-run upward drift biases the percentile high, so treat as a valuation-stretch flag, not a precise level."}, s)
     return row
 
+# Indicators in non-fragility blocks that still describe fragility (valuation stretch).
+FRAGILITY_INPUTS = {"nfc_equity_to_gdp"}
+
 def main():
     rows, gaps = [], []
     for ind in CFG["indicators"]:
@@ -100,10 +103,17 @@ def main():
         sts = [r["status"] for r in rows if r["block"] == k and r["status"] is not None]
         blocks[k] = {"label": b["label"], "role": b["role"], "n": len(sts),
                      "score": None if not sts else round(sum(sts) / len(sts), 2)}
+    def worst(roles, flagged=True):
+        """Fragility is slow-building and one stretched input matters, so use the worst block
+        (and any indicator flagged as a fragility input), not an average that dilutes it."""
+        v = [b["score"] for b in blocks.values() if b["role"] in roles and b["score"] is not None]
+        if flagged:
+            v += [r["status"] for r in rows if r["id"] in FRAGILITY_INPUTS and r["status"] is not None]
+        return None if not v else round(max(v), 2)
     def avg(roles):
         v = [b["score"] for b in blocks.values() if b["role"] in roles and b["score"] is not None]
         return None if not v else round(sum(v) / len(v), 2)
-    frag, trig = avg({"fragility", "mixed"}), avg({"trigger", "mixed"})
+    frag, trig = worst({"fragility"}), avg({"trigger", "mixed"})
     hits = [r["label"] for r in rows if r["chg3m_trigger_hit"]]
     rule = CFG["alert_rule"]
     empty = [k for k, b in blocks.items() if b["n"] == 0]
@@ -126,7 +136,7 @@ def main():
     Path("reports").mkdir(exist_ok=True)
     Path("reports/crisis_dashboard.json").write_text(json.dumps(out, indent=2))
     L = [f"# Crisis dashboard - {out['as_of']}", "", f"**State: {state}**", "",
-         f"Fragility index {frag} | Trigger index {trig} (0 normal, 1 warn, 2 critical)", ""]
+         f"Fragility (worst fragility block or valuation input) {frag} | Trigger index (average) {trig} (0 normal, 1 warn, 2 critical)", ""]
     if hits:
         L += ["3-month jump triggers hit: " + "; ".join(hits), ""]
     L += ["| Block | Role | Score | n |", "|---|---|---|---|"]

@@ -1,4 +1,4 @@
-# Crisis dashboard - 2026-10-12 21:49 UTC
+# Crisis dashboard - 2026-10-13 19:56 UTC
 
 **State: FRAGILE, no trigger yet (late-cycle risk, not a crisis)**
 
@@ -8,11 +8,11 @@ Fast trigger lines (any WARN or worse flags a trigger):
 
 - St. Louis Fed stress index: -0.468 - ok
 - Chicago Fed NFCI: -0.494 - ok
-- VIX: 14.84 - ok
-- HY OAS 3m change (pp): 0.45 - ok
+- VIX: 15.21 - ok
+- HY OAS 3m change (pp): 0.42 - ok
 - SLOOS C&I net tightening, change vs prior quarter (pp): -8.1 - ok
 - SLOOS credit card net tightening, change vs prior quarter (pp): 4.7 - ok
-- VIX / VIX3M (>1.0 = inverted, acute stress): 0.835 - ok
+- VIX / VIX3M (>1.0 = inverted, acute stress): 0.848 - ok
 - MOVE index (rates vol): 98.47 - ok
 
 | Block | Role | Score | n |
@@ -35,10 +35,10 @@ Fast trigger lines (any WARN or worse flags a trigger):
 | SLOOS net % tightening C&I, large/mid firms | 2026-07-01 | 0.0 | 0.0 | ok | 51.4 | 1990-04-01 |
 | Fitch subprime auto ABS 60+ delinquency (%) | 2026-07-31 | 6.13 | 6.13 | WARN | 66.7* | 2026-01-31 |
 | Moody's Baa minus 10y (%) | 2026-10-08 | 1.48 | 1.48 | ok | 4.2 | 1986-01-02 |
-| CCC OAS (%) | 2026-10-08 | 12.52 | 12.52 | WARN | 100.0* | 2023-08-01 |
-| HY OAS (%) | 2026-10-08 | 3.15 | 3.15 | ok | 59.4* | 2023-07-24 |
-| HY OAS 3m change (pp) | 2026-10-08 | 3.15 | 0.45 | ok | 59.4* | 2023-07-24 |
-| IG OAS (%) | 2026-10-08 | 0.82 | 0.82 | ok | 40.5* | 2023-07-24 |
+| CCC OAS (%) | 2026-10-12 | 12.53 | 12.53 | WARN | 100.0* | 2023-08-01 |
+| HY OAS (%) | 2026-10-12 | 3.11 | 3.11 | ok | 53.7* | 2023-07-24 |
+| HY OAS 3m change (pp) | 2026-10-12 | 3.11 | 0.42 | ok | 53.7* | 2023-07-24 |
+| IG OAS (%) | 2026-10-12 | 0.83 | 0.83 | ok | 43.8* | 2023-07-24 |
 | SLOOS credit card net tightening, change vs prior quarter (pp) | 2026-07-01 | 6.7 | 4.7 | ok | 54.5 | 1996-01-01 |
 | SLOOS C&I net tightening, change vs prior quarter (pp) | 2026-07-01 | 0.0 | -8.1 | ok | 51.4 | 1990-04-01 |
 | Chicago Fed NFCI | 2026-10-02 | -0.494 | -0.494 | ok | 39.8 | 1971-01-08 |
@@ -48,13 +48,13 @@ Fast trigger lines (any WARN or worse flags a trigger):
 | Sahm rule indicator | 2026-09-01 | 0.0 | 0.0 | ok | 43.7 | 1959-12-01 |
 | FINRA margin debt y/y (%) | 2026-08-01 | 1.454 | 37.2 | WARN | 89.2 | 1998-01-01 |
 | Broad USD index 3m % change | 2026-10-02 | 121.385 | 0.576 | ok | 90.0 | 2006-01-02 |
-| EM HY corporate OAS (%) | 2026-10-08 | 3.34 | 3.34 | ok | 28.4* | 2023-10-10 |
+| EM HY corporate OAS (%) | 2026-10-12 | 3.3 | 3.3 | ok | 24.6* | 2023-10-16 |
 | Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | CRIT | 100.0 | 1947-10-01 |
 | USDJPY 3m % change (negative = yen carry unwind) | 2026-10-02 | 157.81 | -1.92 | ok | 70.6 | 1971-01-04 |
-| VIX | 2026-10-09 | 14.84 | 14.84 | ok | 30.9 | 1990-01-02 |
+| VIX | 2026-10-12 | 15.21 | 15.21 | ok | 33.4 | 1990-01-02 |
 | MOVE index (rates vol) | 2026-10-09 | 98.47 | 98.47 | ok | 71.7* | 2016-10-14 |
-| VIX3M (info, not scored) | 2026-10-09 | 17.77 | 17.77 | n/a | 35.2 | 2007-12-04 |
-| VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-10-09 | 0.835 | 0.835 | ok | 18.2 | 2007-12-04 |
+| VIX3M (info, not scored) | 2026-10-12 | 17.93 | 17.93 | n/a | 36.4 | 2007-12-04 |
+| VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-10-12 | 0.848 | 0.848 | ok | 25.3 | 2007-12-04 |
 
 * percentile covers under 10 years of history (HY/IG/CCC/EM HY from 2023, subprime auto file): not a comparison with 2008 or 2020.
 

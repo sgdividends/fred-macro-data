@@ -1,4 +1,4 @@
-# Crisis dashboard - 2026-10-15 17:51 UTC
+# Crisis dashboard - 2026-10-16 17:37 UTC
 
 **State: FRAGILE, no trigger yet (late-cycle risk, not a crisis)**
 
@@ -8,12 +8,12 @@ Fast trigger lines (any WARN or worse flags a trigger):
 
 - St. Louis Fed stress index: -0.721 - ok
 - Chicago Fed NFCI: -0.499 - ok
-- VIX: 16.87 - ok
+- VIX: 16.46 - ok
 - HY OAS 3m change (pp): 0.53 - ok
 - SLOOS C&I net tightening, change vs prior quarter (pp): -8.1 - ok
 - SLOOS credit card net tightening, change vs prior quarter (pp): 4.7 - ok
-- VIX / VIX3M (>1.0 = inverted, acute stress): 0.898 - ok
-- MOVE index (rates vol): 99.06 - ok
+- VIX / VIX3M (>1.0 = inverted, acute stress): 0.89 - ok
+- MOVE index (rates vol): 102.49 - ok
 
 | Block | Role | Score | n |
 |---|---|---|---|
@@ -34,7 +34,7 @@ Fast trigger lines (any WARN or worse flags a trigger):
 | SLOOS net % tightening, credit cards | 2026-07-01 | 6.7 | 6.7 | ok | 54.5 | 1996-01-01 |
 | SLOOS net % tightening C&I, large/mid firms | 2026-07-01 | 0.0 | 0.0 | ok | 51.4 | 1990-04-01 |
 | Fitch subprime auto ABS 60+ delinquency (%) | 2026-07-31 | 6.13 | 6.13 | WARN | 66.7* | 2026-01-31 |
-| Moody's Baa minus 10y (%) | 2026-10-13 | 1.46 | 1.46 | ok | 3.2 | 1986-01-02 |
+| Moody's Baa minus 10y (%) | 2026-10-14 | 1.44 | 1.44 | ok | 2.2 | 1986-01-02 |
 | CCC OAS (%) | 2026-10-14 | 12.82 | 12.82 | WARN | 100.0* | 2023-08-01 |
 | HY OAS (%) | 2026-10-14 | 3.25 | 3.25 | ok | 71.8* | 2023-07-24 |
 | HY OAS 3m change (pp) | 2026-10-14 | 3.25 | 0.53 | ok | 71.8* | 2023-07-24 |
@@ -48,13 +48,13 @@ Fast trigger lines (any WARN or worse flags a trigger):
 | Sahm rule indicator | 2026-09-01 | 0.0 | 0.0 | ok | 43.7 | 1959-12-01 |
 | FINRA margin debt y/y (%) | 2026-08-01 | 1.454 | 37.2 | WARN | 89.2 | 1998-01-01 |
 | Broad USD index 3m % change | 2026-10-09 | 121.602 | 0.703 | ok | 90.7 | 2006-01-02 |
-| EM HY corporate OAS (%) | 2026-10-14 | 3.32 | 3.32 | ok | 26.6* | 2023-10-16 |
+| EM HY corporate OAS (%) | 2026-10-15 | 3.39 | 3.39 | ok | 33.1* | 2023-10-17 |
 | Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | CRIT | 100.0 | 1947-10-01 |
 | USDJPY 3m % change (negative = yen carry unwind) | 2026-10-09 | 158.34 | -2.434 | ok | 70.9 | 1971-01-04 |
-| VIX | 2026-10-14 | 16.87 | 16.87 | ok | 45.7 | 1990-01-02 |
-| MOVE index (rates vol) | 2026-10-14 | 99.06 | 99.06 | ok | 72.2* | 2016-10-17 |
-| VIX3M (info, not scored) | 2026-10-14 | 18.79 | 18.79 | n/a | 42.6 | 2007-12-04 |
-| VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-10-14 | 0.898 | 0.898 | ok | 53.4 | 2007-12-04 |
+| VIX | 2026-10-15 | 16.46 | 16.46 | ok | 42.7 | 1990-01-02 |
+| MOVE index (rates vol) | 2026-10-15 | 102.49 | 102.49 | ok | 74.9 | 2016-10-17 |
+| VIX3M (info, not scored) | 2026-10-15 | 18.49 | 18.49 | n/a | 40.5 | 2007-12-04 |
+| VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-10-15 | 0.89 | 0.89 | ok | 49.7 | 2007-12-04 |
 
 * percentile covers under 10 years of history (HY/IG/CCC/EM HY from 2023, subprime auto file): not a comparison with 2008 or 2020.
 

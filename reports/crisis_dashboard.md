@@ -1,4 +1,4 @@
-# Crisis dashboard - 2026-10-20 18:05 UTC
+# Crisis dashboard - 2026-10-21 18:10 UTC
 
 **State: FRAGILE, no trigger yet (late-cycle risk, not a crisis)**
 
@@ -13,7 +13,7 @@ Fast trigger lines (any WARN or worse flags a trigger):
 - SLOOS C&I net tightening, change vs prior quarter (pp): -8.1 - ok
 - SLOOS credit card net tightening, change vs prior quarter (pp): 4.7 - ok
 - VIX / VIX3M (>1.0 = inverted, acute stress): 0.941 - ok
-- MOVE index (rates vol): 101.3 - ok
+- MOVE index (rates vol): 101.7 - ok
 
 | Block | Role | Score | n |
 |---|---|---|---|
@@ -52,7 +52,7 @@ Fast trigger lines (any WARN or worse flags a trigger):
 | Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | CRIT | 100.0 | 1947-10-01 |
 | USDJPY 3m % change (negative = yen carry unwind) | 2026-10-16 | 158.0 | -2.721 | ok | 70.7 | 1971-01-04 |
 | VIX | 2026-10-19 | 18.44 | 18.44 | ok | 54.9 | 1990-01-02 |
-| MOVE index (rates vol) | 2026-10-19 | 101.3 | 101.3 | ok | 73.9 | 2016-10-20 |
+| MOVE index (rates vol) | 2026-10-20 | 101.7 | 101.7 | ok | 74.2 | 2016-10-21 |
 | VIX3M (info, not scored) | 2026-10-19 | 19.6 | 19.6 | n/a | 48.6 | 2007-12-04 |
 | VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-10-19 | 0.941 | 0.941 | ok | 72.8 | 2007-12-04 |
 

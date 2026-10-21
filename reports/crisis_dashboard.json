@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-20 18:05 UTC",
+  "as_of": "2026-10-21 18:10 UTC",
   "state": "FRAGILE, no trigger yet (late-cycle risk, not a crisis)",
   "fragility_index": 2,
   "trigger_index": 0.11,
@@ -42,7 +42,7 @@
     },
     {
       "label": "MOVE index (rates vol)",
-      "read": 101.3,
+      "read": 101.7,
       "status": 0
     }
   ],
@@ -497,12 +497,12 @@
       "id": "move",
       "label": "MOVE index (rates vol)",
       "block": "vol_regime",
-      "date": "2026-10-19",
-      "value": 101.3,
-      "read": 101.3,
-      "chg_3m_abs": 30.42,
-      "pctile_own_history": 73.9,
-      "history_start": "2016-10-20",
+      "date": "2026-10-20",
+      "value": 101.7,
+      "read": 101.7,
+      "chg_3m_abs": 29.04,
+      "pctile_own_history": 74.2,
+      "history_start": "2016-10-21",
       "status": 0,
       "chg3m_trigger_hit": false,
       "note": "Not on FRED. Auto-fetched from Yahoo chart API (unofficial, may fail) with data/manual/move_index.csv as fallback. Thresholds are judgment (March 2023 peak was ~198)."

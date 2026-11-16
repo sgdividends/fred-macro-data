@@ -1,4 +1,4 @@
-# Crisis dashboard - 2026-11-13 20:36 UTC
+# Crisis dashboard - 2026-11-16 22:59 UTC
 
 **State: FRAGILE, no trigger yet (late-cycle risk, not a crisis)**
 
@@ -8,12 +8,12 @@ Fast trigger lines (any WARN or worse flags a trigger):
 
 - St. Louis Fed stress index: -0.492 - ok
 - Chicago Fed NFCI: -0.462 - ok
-- VIX: 18.7 - ok
-- HY OAS 3m change (pp): 0.49 - ok
+- VIX: 19.3 - ok
+- HY OAS 3m change (pp): 0.52 - ok
 - SLOOS C&I net tightening, change vs prior quarter (pp): 1.7 - ok
 - SLOOS credit card net tightening, change vs prior quarter (pp): -2.7 - ok
-- VIX / VIX3M (>1.0 = inverted, acute stress): 0.932 - ok
-- MOVE index (rates vol): 98.43 - ok
+- VIX / VIX3M (>1.0 = inverted, acute stress): 0.936 - ok
+- MOVE index (rates vol): 98.79 - ok
 
 | Block | Role | Score | n |
 |---|---|---|---|
@@ -34,27 +34,27 @@ Fast trigger lines (any WARN or worse flags a trigger):
 | SLOOS net % tightening, credit cards | 2026-10-01 | 4.0 | 4.0 | ok | 47.6 | 1996-01-01 |
 | SLOOS net % tightening C&I, large/mid firms | 2026-10-01 | 1.7 | 1.7 | ok | 53.1 | 1990-04-01 |
 | Fitch subprime auto ABS 60+ delinquency (%) | 2026-07-31 | 6.13 | 6.13 | WARN | 66.7* | 2026-01-31 |
-| Moody's Baa minus 10y (%) | 2026-11-10 | 1.51 | 1.51 | ok | 6.4 | 1986-01-02 |
-| CCC OAS (%) | 2026-11-12 | 13.14 | 13.14 | WARN | 98.6* | 2023-08-01 |
-| HY OAS (%) | 2026-11-12 | 3.2 | 3.2 | ok | 65.5* | 2023-07-24 |
-| HY OAS 3m change (pp) | 2026-11-12 | 3.2 | 0.49 | ok | 65.5* | 2023-07-24 |
-| IG OAS (%) | 2026-11-12 | 0.89 | 0.89 | ok | 56.7* | 2023-07-24 |
+| Moody's Baa minus 10y (%) | 2026-11-13 | 1.47 | 1.47 | ok | 3.7 | 1986-01-02 |
+| CCC OAS (%) | 2026-11-13 | 13.16 | 13.16 | WARN | 98.6* | 2023-08-01 |
+| HY OAS (%) | 2026-11-13 | 3.23 | 3.23 | ok | 68.7* | 2023-07-24 |
+| HY OAS 3m change (pp) | 2026-11-13 | 3.23 | 0.52 | ok | 68.7* | 2023-07-24 |
+| IG OAS (%) | 2026-11-13 | 0.89 | 0.89 | ok | 56.7* | 2023-07-24 |
 | SLOOS credit card net tightening, change vs prior quarter (pp) | 2026-10-01 | 4.0 | -2.7 | ok | 47.6 | 1996-01-01 |
 | SLOOS C&I net tightening, change vs prior quarter (pp) | 2026-10-01 | 1.7 | 1.7 | ok | 53.1 | 1990-04-01 |
 | Chicago Fed NFCI | 2026-11-06 | -0.462 | -0.462 | ok | 44.1 | 1971-01-08 |
 | St. Louis Fed stress index | 2026-11-06 | -0.492 | -0.492 | ok | 28.3 | 1993-12-31 |
-| 10y-3m spread (pp) | 2026-11-12 | 0.78 | 0.78 | ok | 30.1 | 1982-01-04 |
+| 10y-3m spread (pp) | 2026-11-16 | 0.78 | 0.78 | ok | 30.1 | 1982-01-04 |
 | Initial claims 4wk avg, 3m % change | 2026-11-07 | 195250.0 | -1.884 | ok | 1.6 | 1967-01-28 |
 | Sahm rule indicator | 2026-10-01 | 0.0 | 0.0 | ok | 43.8 | 1959-12-01 |
 | FINRA margin debt y/y (%) | 2026-09-01 | 1.48 | 31.4 | WARN | 82.6 | 1998-01-01 |
-| Broad USD index 3m % change | 2026-11-06 | 121.88 | 1.982 | ok | 91.4 | 2006-01-02 |
-| EM HY corporate OAS (%) | 2026-11-12 | 3.7 | 3.7 | ok | 59.9* | 2023-11-14 |
+| Broad USD index 3m % change | 2026-11-13 | 122.65 | 2.908 | ok | 93.4 | 2006-01-02 |
+| EM HY corporate OAS (%) | 2026-11-13 | 3.72 | 3.72 | ok | 60.7* | 2023-11-17 |
 | Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | CRIT | 100.0 | 1947-10-01 |
-| USDJPY 3m % change (negative = yen carry unwind) | 2026-11-06 | 158.23 | -0.139 | ok | 70.8 | 1971-01-04 |
-| VIX | 2026-11-12 | 18.7 | 18.7 | ok | 56.5 | 1990-01-02 |
-| MOVE index (rates vol) | 2026-11-12 | 98.43 | 98.43 | ok | 71.2 | 2016-11-14 |
-| VIX3M (info, not scored) | 2026-11-12 | 20.06 | 20.06 | n/a | 52.0 | 2007-12-04 |
-| VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-11-12 | 0.932 | 0.932 | ok | 69.1 | 2007-12-04 |
+| USDJPY 3m % change (negative = yen carry unwind) | 2026-11-13 | 159.93 | 0.364 | ok | 71.6 | 1971-01-04 |
+| VIX | 2026-11-13 | 19.3 | 19.3 | ok | 59.4 | 1990-01-02 |
+| MOVE index (rates vol) | 2026-11-13 | 98.79 | 98.79 | ok | 71.6* | 2016-11-17 |
+| VIX3M (info, not scored) | 2026-11-13 | 20.62 | 20.62 | n/a | 56.2 | 2007-12-04 |
+| VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-11-13 | 0.936 | 0.936 | ok | 70.5 | 2007-12-04 |
 
 * percentile covers under 10 years of history (HY/IG/CCC/EM HY from 2023, subprime auto file): not a comparison with 2008 or 2020.
 

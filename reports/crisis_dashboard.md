@@ -1,4 +1,4 @@
-# Crisis dashboard - 2026-11-25 22:40 UTC
+# Crisis dashboard - 2026-11-26 22:30 UTC
 
 **State: ALERT: fragile and a trigger is turning**
 
@@ -13,7 +13,7 @@ Fast trigger lines (any WARN or worse flags a trigger):
 - SLOOS C&I net tightening, change vs prior quarter (pp): 1.7 - ok
 - SLOOS credit card net tightening, change vs prior quarter (pp): -2.7 - ok
 - VIX / VIX3M (>1.0 = inverted, acute stress): 1.035 - WARN
-- MOVE index (rates vol): 98.84 - ok
+- MOVE index (rates vol): 97.54 - ok
 
 Triggers hit: VIX (WARN); HY OAS 3m change (pp) (WARN); VIX / VIX3M (>1.0 = inverted, acute stress) (WARN)
 
@@ -45,7 +45,7 @@ Triggers hit: VIX (WARN); HY OAS 3m change (pp) (WARN); VIX / VIX3M (>1.0 = inve
 | SLOOS C&I net tightening, change vs prior quarter (pp) | 2026-10-01 | 1.7 | 1.7 | ok | 53.1 | 1990-04-01 |
 | Chicago Fed NFCI | 2026-11-20 | -0.444 | -0.444 | ok | 44.9 | 1971-01-08 |
 | St. Louis Fed stress index | 2026-11-20 | -0.07 | -0.07 | ok | 61.2 | 1993-12-31 |
-| 10y-3m spread (pp) | 2026-11-24 | 0.55 | 0.55 | ok | 24.6 | 1982-01-04 |
+| 10y-3m spread (pp) | 2026-11-25 | 0.51 | 0.51 | ok | 23.2 | 1982-01-04 |
 | Initial claims 4wk avg, 3m % change | 2026-11-21 | 196000.0 | -4.039 | ok | 1.8 | 1967-01-28 |
 | Sahm rule indicator | 2026-10-01 | 0.0 | 0.0 | ok | 43.8 | 1959-12-01 |
 | FINRA margin debt y/y (%) | 2026-10-01 | 1.448 | 22.4 | ok | 68.8 | 1998-01-01 |
@@ -54,7 +54,7 @@ Triggers hit: VIX (WARN); HY OAS 3m change (pp) (WARN); VIX / VIX3M (>1.0 = inve
 | Nonfinancial corp equity / GDP (%) - Buffett-style, percentile only | 2026-04-01 | 255.046 | 255.046 | CRIT | 100.0 | 1947-10-01 |
 | USDJPY 3m % change (negative = yen carry unwind) | 2026-11-20 | 158.76 | -0.057 | ok | 71.0 | 1971-01-04 |
 | VIX | 2026-11-24 | 26.36 | 26.36 | WARN | 86.3 | 1990-01-02 |
-| MOVE index (rates vol) | 2026-11-24 | 98.84 | 98.84 | ok | 71.5* | 2016-11-28 |
+| MOVE index (rates vol) | 2026-11-25 | 97.54 | 97.54 | ok | 70.2* | 2016-11-28 |
 | VIX3M (info, not scored) | 2026-11-24 | 25.47 | 25.47 | n/a | 78.3 | 2007-12-04 |
 | VIX / VIX3M (>1.0 = inverted, acute stress) | 2026-11-24 | 1.035 | 1.035 | WARN | 94.6 | 2007-12-04 |
 
